@@ -1,11 +1,28 @@
 {% extends 'files/layout.html' %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Kaltsa</title>
-  </head>
-  <body>
+{% load static %}
 
-  </body>
-</html>
+{% block content %}
+<div class="col-md-12">
+  <div class="row">
+    {% for profile in personsData %}
+    <div class="col-3">
+      <div class="card mt-3" style="width: 18rem;">
+        <img src="{{profile.person_image.url}}" class="card-img-top" alt="{{profile.full_name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{profile.full_name}}</h5>
+          <p class="card-text">
+            {{profile.age}}
+            <br>
+            Ultima vez: {{profile.last_seen_in}}
+            <br>
+            {{profile.date_and_time}}
+          </p>
+          <a href="{% url 'perfil' profile.id %}" class="btn btn-primary">Ver perfil</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

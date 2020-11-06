@@ -19,17 +19,28 @@ class MissingPerson(models.Model):
         (TYPE_V, "Piel oscura o marrón"),
         (TYPE_VI, "Piel muy oscura o negra"),
     ]
-    # Person's physical characteristics
+
+    MALE = "Masculino"
+    FEMALE = "Female"
+
+    GENDER_CHOICES = [
+        (MALE, "Masculino"),
+        (FEMALE, "Female"),
+    ]
+    # General Information
     full_name = models.CharField(max_length=200, null=True)
     age = models.IntegerField(null=True)
+    gender = models.CharField(max_length=100, choices=GENDER_CHOICES, default = "Género", null=True)
+
+    # Person's physical characteristics
     height = models.FloatField(null=True)
-    skin_color = models.CharField(max_length=100, choices=SKIN_COLOR_CHOICES)
+    hair_color = models.CharField(max_length=200, null=True)
+    skin_color = models.CharField(max_length=100, choices=SKIN_COLOR_CHOICES, default="Color de piel")
+
     eye_color = models.CharField(max_length=50, null=True)
-    clothes = models.CharField(max_length=500, null=True)
     unique_characteristics = models.CharField(max_length=300, null=True)
 
-    # TODO: Add person images
-    #person_image = models.ImageField()
+    person_image = models.ImageField(default="default.png", null=True, blank=True)
 
     # TODO: Add person last known location (city)
     # city = models.
@@ -43,7 +54,8 @@ class MissingPerson(models.Model):
     phone_number = models.CharField(max_length=10, null=True)
 
     def __str__(self):
-        return self.full_name
+        info = 'Name: {0.full_name}, Age: {0.age}, id:{0.id}'
+        return info.format(self)
         # return self.full_name, self.age, self.last_seen_in, self.date_and_time
 
 
@@ -58,4 +70,5 @@ class Clue(models.Model):
     phone_number = models.CharField(max_length=10, null=True)
 
     def __str__(self):
-        return self.clue_of.full_name
+        clue = '{0.seen_in}'
+        return clue.format(self)

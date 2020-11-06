@@ -1,5 +1,76 @@
 {% extends 'files/layout.html' %}
 
 {% block content %}
-  <h4>Alta de persona</h4>
+
+<div class="col-md-12 mt-4">
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row mb-3">
+      <div class="col-6">
+        <div class="row mb-3">
+          <div class="col-5">
+            {{form.full_name}}
+          </div>
+          <div class="col-2">
+            {{form.age}}
+          </div>
+          <div class="col-3">
+            {{form.gender}}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-2">
+            {{form.height}}
+          </div>
+          <div class="col-3">
+            {{form.skin_color}}
+          </div>
+          <div class="col-3">
+            {{form.eye_color}}
+          </div>
+          <div class="col-4">
+            {{form.hair_color}}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            {{form.unique_characteristics}}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            {{form.additional_info}}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            {{form.person_image}}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="row mb-3">
+          <div class="col-4">
+            {{form.contact_full_name}}
+          </div>
+          <div class="col-4">
+            {{form.phone_number}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            {{form.last_seen_in}}
+          </div>
+          <div class="col-5">
+            {{form.date_and_time}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input class="btn btn-success login_btn" type="submit" value="Resgistrar persona">
+  </form>
+</div>
+
 {% endblock %}
