@@ -1,7 +1,9 @@
 # Kaltsa
 
 ## Pendientes del back-end
---> Upload clue
+--> Upload clue(DONE)
+#
+--> Create users (DONE)
 #
 --> create cities table
 #
