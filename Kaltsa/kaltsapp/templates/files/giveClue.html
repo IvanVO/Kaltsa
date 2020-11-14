@@ -1,0 +1,55 @@
+{% extends 'files/layout.html'%}
+{% load static  %}
+{% block content %}
+<div class="wrapper">
+  <img src="{{pista.person_image.url}}" id="missing_person_img">
+  <h2 class="imp">{{pista.full_name}}</h2>
+  <p class="imp">
+    <span class="profile-data">{{pista.age}} años</span>
+    <br>
+    <span class="profile-data">{{pista.height}} mts</span>
+    <br>
+    <span class="profile-data">{{pista.skin_color}}</span>
+    <br>
+    <span class="profile-data">Ojos {{pista.eye_color}}</span>
+    <br>
+    <span class="profile-data">Pelo {{pista.hair_color}}</span>
+    <br>
+    <span class="profile-data">Última vez: {{pista.last_seen_in}}</span>
+    <br>
+    <span class="profile-data">{{pista.date_and_time}}</span>
+    <br>
+  </p>
+</div>
+<div class="row ml-2">
+  <div class="col-6">
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="row mb-3">
+        <div class="col-4">
+          {{form.seen_in}}
+        </div>
+        <div class="col-5">
+          {{form.date_and_time}}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-8">
+          {{form.additional_info}}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-6">
+          {{form.phone_number}}
+        </div>
+      </div>
+      <input class="btn btn-success login_btn" type="submit" value="Enviar">
+    </form>
+  </div>
+</div>
+<!-- <div class="col-md-12 mt-4">
+  <div class="row">
+
+  </div>
+</div> -->
+{% endblock %}

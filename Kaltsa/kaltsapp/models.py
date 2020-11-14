@@ -54,10 +54,8 @@ class MissingPerson(models.Model):
     phone_number = models.CharField(max_length=10, null=True)
 
     def __str__(self):
-        info = 'Name: {0.full_name}, Age: {0.age}, id:{0.id}'
+        info = 'Name: {0.full_name}, Age: {0.age}'
         return info.format(self)
-        # return self.full_name, self.age, self.last_seen_in, self.date_and_time
-
 
 class Clue(models.Model):
     # Seen in

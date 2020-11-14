@@ -9,15 +9,11 @@
 
   <div class="collapse navbar-collapse" id="navbarContainer">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="ciudadesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Ciudades
-        </a>
-        <div class="dropdown-menu" aria-labelledby="ciudadesDropdown">
-          <a class="dropdown-item" href="#">Puebla</a>
-          <a class="dropdown-item" href="#">CDMX</a>
-          <a class="dropdown-item" href="#">Monterrey</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'iniciarSesion' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'crearCuenta' %}">Crear cuenta</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'altaPersonas' %}">Alta de personas</a>

@@ -1,14 +1,32 @@
+body {
+  background-color: #F50537;
+}
+.card {
+  background-color: #F50537;
+  color: #FFFFFF;
+}
 .card-img-top {
   width: 100%;
   height: 15vw;
   object-fit: cover;
 }
-#img-container{
-  height: 100px!important;
-  width: 100px!important;
+
+.wrapper {
+  column-count: 2;
+  column-gap: 50px;
+  padding: 15px;
 }
-#missing_person_img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+.imp {
+  line-height: 1.6;
+  font-family: Helvetica;
+  text-align: justify;
+  margin: 0;
+  /* font-size: 14px; */
+}
+#missing_person_img{
+  float: left;
+  width: 350px;
+  shape-margin:20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }

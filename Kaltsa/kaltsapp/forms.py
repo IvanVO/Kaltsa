@@ -1,7 +1,13 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django import forms
-#from django.forms import ModelForm
 
 from .models import *
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 
 class MissingPersonForm(forms.ModelForm):
     class Meta:
@@ -43,5 +49,22 @@ class MissingPersonForm(forms.ModelForm):
                 attrs = {'class':'form-control', 'placeholder':'Última vez visto en'}
             ),
             'date_and_time': forms.DateTimeInput(attrs = {'type':'datetime-local', 'class':'form-control'}
+            ),
+        }
+
+class giveClueForm(forms.ModelForm):
+    class Meta:
+        model = Clue
+        exclude =['clue_of']
+
+        widgets = {
+            'seen_in': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Visto en'}
+            ),
+            'date_and_time': forms.DateTimeInput(attrs = {'type':'datetime-local', 'class':'form-control'}
+            ),
+            'additional_info': forms.Textarea(attrs = {'class':'form-control', 'cols':4, 'rows':4, 'placeholder':'Información adicional'}
+            ),
+            'phone_number': forms.TextInput(
+                attrs = {'class':'form-control', 'placeholder':'Número de teléfono'}
             ),
         }
