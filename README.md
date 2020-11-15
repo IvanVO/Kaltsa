@@ -3,8 +3,8 @@
 ## **Pendientes (Back-end):**
 
 - **Terminar autenticación de usuarios:**
-    - Log in
-    - Log out
+    - Log in (LISTO)
+    - Log out (LISTO)
     - Registration —> Número de teléfono añadido (se añadió el campo, falta guardarlo en la base de datos)
     - User permissions
     - Añadir página de perfil de usuario
