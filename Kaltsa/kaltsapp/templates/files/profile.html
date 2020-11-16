@@ -1,0 +1,32 @@
+{% extends 'files/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+  <img src="{{profile.person_image.url}}" id="missing_person_img">
+  <h2 class="imp">{{profile.full_name}}</h2>
+  <p class="imp">
+    <span class="profile-data">{{profile.age}} años</span>
+    <br>
+    <span class="profile-data">{{profile.height}} mts</span>
+    <br>
+    <span class="profile-data">{{profile.skin_color}}</span>
+    <br>
+    <span class="profile-data">Ojos {{profile.eye_color}}</span>
+    <br>
+    <span class="profile-data">Pelo {{profile.hair_color}}</span>
+    <br>
+    <span class="profile-data">Última vez: {{profile.last_seen_in}}</span>
+    <br>
+    <span class="profile-data">{{profile.date_and_time}}</span>
+    <br>
+  </p>
+</div>
+
+<div class="ml-3" id="datos-adcionales">
+  <h4>Datos Adicionales:</h4>
+    <p>{{profile.additional_info}}</p>
+    <a href="{% url 'pista' profile.full_name profile.id %}" class="btn btn-danger">Proporcionar infromación</a>
+  </div>
+</div>
+{% endblock %}
