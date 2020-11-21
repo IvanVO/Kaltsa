@@ -10,8 +10,8 @@
     - Añadir página de perfil de usuario
 - **Editar Base de datos:**
     - Agregar tabla de ciudades
-    - Modificar tabla de personas desaparecidad (dividir nombre completo por Nombre, apellido paterno y apellido materno)
-    - Verificar que la relación uno a muchos esté bien implementada
+    - Modificar tabla de personas desaparecidad (dividir nombre completo por Nombre, apellido paterno y apellido materno) (LISTO)
+    - Verificar que la relación uno a muchos esté bien implementada (LISTO)
 - Crear página de usuarios para ver las pistas sobre las persona que han dado de alta.
     - Agregar apartado para actualizar el status de la persona desaparecida
     - Usar un flag para indicar que la persona ya fué encontrada.
