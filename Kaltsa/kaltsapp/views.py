@@ -55,13 +55,22 @@ def logoutUser(request):
 
     return redirect('iniciarSesion')
 
+def loadMunicipios(request):
+    state_id = request.GET.get('state')
+    municipios = Municipio.objects.filter(state_id=state_id).order_by('name')
+
+    context ={'municipios':municipios}
+
+    return render(request, "files/estado-municipio.html", context)
+
+
 @login_required(login_url="iniciarSesion")
 def altaPersonas(request):
     form = MissingPersonForm()
 
     if request.method == 'POST':
         form = MissingPersonForm(request.POST, request.FILES)
-
+        
         if form.is_valid():
             form.save()
             # missing_person = form.cleaned_data.get('full_name')
@@ -73,8 +82,15 @@ def altaPersonas(request):
 
 @login_required(login_url="iniciarSesion")
 def perfilUsuario(request):
+    userProfile = request.user
+    form = CreateUserForm(instance=userProfile)
 
-    context = {}
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST, instance=userProfile)
+        if form.is_valid():
+            form.save()
+
+    context = {'form': form}
 
     return render(request, "files/userProfile.html", context)
 
@@ -86,15 +102,15 @@ def perfil(request, pk):
 
 def proporcionarPista(request, full_name, pk):
     pista = MissingPerson.objects.get(full_name=full_name, id=pk)
-    # clue_of = MissingPerson.objects.all()
-    form = giveClueForm()
+    form = giveClueForm(instance=pista)
 
     if request.method == 'POST':
-        form = giveClueForm(request.POST)
+        form = giveClueForm(request.POST, instance=pista)
         if form.is_valid():
-            form.save()
+            clue_ofform.save()
+
             Clue.objects.create(
-                clue_of=pista,
+                clue_of=clue_of,
             )
 
             return redirect('home')

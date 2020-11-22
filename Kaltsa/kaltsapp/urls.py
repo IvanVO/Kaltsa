@@ -11,6 +11,8 @@ urlpatterns = [
 
     path('crear-cuenta/', views.crearCuenta, name="crearCuenta"),
 
+    path('ajax/load-municipios/', views.loadMunicipios, name='ajax_load_municipios'),
+
     path('alta-de-personas/', views.altaPersonas, name="altaPersonas"),
 
     path('perfil/', views.perfilUsuario, name="perfilUsuario"),

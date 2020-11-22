@@ -65,7 +65,26 @@ class MissingPersonForm(forms.ModelForm):
             ),
             'date_and_time': forms.DateTimeInput(attrs = {'type':'datetime-local', 'class':'form-control'}
             ),
+            'state': forms.Select(
+            attrs = {'class':'form-control', 'name':'Estado'}
+            ),
+            'municipio': forms.Select(
+            attrs = {'class':'form-control', 'name':'Estado'}
+            ),
         }
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.fields['municipio'].queryset = Municipio.objects.none()
+
+            if 'state' in self.data:
+                try:
+                    state_id = int(self.data.get('state'))
+                    self.fields['municipio'].queryset = City.objects.filter(state_id=state_id).order_by('name')
+                except (ValueError, TypeError):
+                    pass  # invalid input from the client; ignore and fallback to empty City queryset
+            elif self.instance.pk:
+                self.fields['state'].queryset = self.instance.state.municipio_set.order_by('name')
 
 class giveClueForm(forms.ModelForm):
     class Meta:
@@ -76,6 +95,12 @@ class giveClueForm(forms.ModelForm):
             'seen_in': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Visto en'}
             ),
             'date_and_time': forms.DateTimeInput(attrs = {'type':'datetime-local', 'class':'form-control'}
+            ),
+            'state': forms.Select(
+            attrs = {'class':'form-control', 'name':'Estado'}
+            ),
+            'municipio': forms.Select(
+            attrs = {'class':'form-control', 'name':'Estado'}
             ),
             'additional_info': forms.Textarea(attrs = {'class':'form-control', 'cols':4, 'rows':4, 'placeholder':'Información adicional'}
             ),

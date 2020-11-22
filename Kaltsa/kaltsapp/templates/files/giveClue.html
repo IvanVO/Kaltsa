@@ -23,7 +23,7 @@
 </div>
 <div class="row ml-2">
   <div class="col-6">
-    <form action="" method="post">
+    <form id="MissingPersonForm" data-muncicipios-url="{% url 'ajax_load_municipios' %}" method="post" novalidate>
       {% csrf_token %}
       <div class="row mb-3">
         <div class="col-4">
@@ -31,6 +31,14 @@
         </div>
         <div class="col-5">
           {{form.date_and_time}}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          {{form.state}}
+        </div>
+        <div class="col-4">
+          {{form.municipio}}
         </div>
       </div>
       <div class="row mb-3">

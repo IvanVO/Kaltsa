@@ -3,6 +3,23 @@ from django.contrib.auth.models import User
 # TODO:  Add the imageField to the database
 
 # Create your models here.
+class State(models.Model):
+    state = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        stateName = '{0.state}'
+
+        return stateName.format(self)
+
+class Municipio(models.Model):
+    state = models.ForeignKey(State, null=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        municipioName = '{0.name}'
+
+        return municipioName.format(self)
+
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=10, null=True)
@@ -50,23 +67,30 @@ class MissingPerson(models.Model):
 
     person_image = models.ImageField(default="default.png", null=True, blank=True)
 
-    # TODO: Add person last known location (city)
-    # city = models.
+    # Persons last known location
+    state = models.ForeignKey(State, on_delete=models.SET_NULL, null=True)
+    municipio = models.ForeignKey(Municipio, on_delete=models.SET_NULL, null=True)
 
     last_seen_in = models.CharField(max_length=300, null=True)
-    date_and_time = models.DateTimeField(auto_now_add=False)
+    date_and_time = models.DateTimeField(auto_now_add=False, null=True)
     additional_info = models.CharField(max_length=200)
 
     def __str__(self):
-        info = 'Name: {0.full_name}, {0.id}'
+        info = 'Name: {0.full_name}'
         # , Age: {0.age}'
         return info.format(self)
+
 
 class Clue(models.Model):
     # Seen in
     clue_of = models.ForeignKey(MissingPerson, null=True, on_delete=models.CASCADE)
+
+    state = models.ForeignKey(State, on_delete=models.SET_NULL, null=True)
+    municipio = models.ForeignKey(Municipio, on_delete=models.SET_NULL, null=True)
+
     seen_in = models.CharField(max_length=300)
-    date_and_time = models.DateTimeField(auto_now_add=False)
+    date_and_time = models.DateTimeField(auto_now_add=False, null=True)
+
     additional_info = models.CharField(max_length=200)
 
     # Contact number of person who gave the clue
