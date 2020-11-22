@@ -9,7 +9,8 @@
     - User permissions
     - Añadir página de perfil de usuario
 - **Editar Base de datos:**
-    - Agregar tabla de ciudades
+    - Agregar tabla de estados (Tabla añadida a la BD, falta arreglar las dependencias entre Estados y Municipios)
+        - En caso de que no me de tiempo de arrgelar ese error, lo voy a dejar solo con el estado de Puebla en los dropdowns
     - Modificar tabla de personas desaparecidad (dividir nombre completo por Nombre, apellido paterno y apellido materno)
     - Verificar que la relación uno a muchos esté bien implementada
 - Crear página de usuarios para ver las pistas sobre las persona que han dado de alta.
