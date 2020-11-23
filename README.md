@@ -1,5 +1,8 @@
 # Kaltsa
 
+## **NOTA**
+**No tocar estado-municipio.html**
+
 ## **Pendientes (Back-end):**
 
 - **Terminar autenticación de usuarios:**
