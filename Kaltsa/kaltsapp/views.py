@@ -107,7 +107,7 @@ def proporcionarPista(request, full_name, pk):
     if request.method == 'POST':
         form = giveClueForm(request.POST, instance=pista)
         if form.is_valid():
-            clue_ofform.save()
+            clue_of=form.save()
 
             Clue.objects.create(
                 clue_of=clue_of,
